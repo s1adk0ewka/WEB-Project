@@ -35,8 +35,9 @@ animOnScroll();
 
 
 const toNavButton=document.querySelector('._show-nav-button');
+const button_show_trigger=document.querySelector('.nav-button-show-trigger');
 window.onscroll=()=>{
-  if(window.scrollY>offset(document.querySelector('.nav-button-show-offset')).top){
+  if(window.scrollY>offset(button_show_trigger).top){
     toNavButton.classList.remove('_hide');
   }
   else{
