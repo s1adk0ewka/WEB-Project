@@ -307,5 +307,35 @@ ol li{
     transform: scale(1);
 }
 
+#ToNavigationButton{
+    position: fixed;
+    bottom:5vh;
+    right:5vw;
+    z-index: 1000;
+    background-color: #3054ad;
+    border:1px solid whitesmoke;
+    border-radius: 10px;
+}
+
+#ToNavigationButton a{
+    text-decoration: none;
+    color:white;
+    font-size: 14px;
+    margin:5px;
+}
+
+._show-nav-button{
+    visibility:visible;
+    opacity: 1;
+    transition: 1s;
+}
+
+._show-nav-button._hide{
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+
 
 

@@ -31,5 +31,15 @@ function offset(el){
     scrollTop = window.scrollY||document.documentElement.scrollTop;
   return { top: rect.top + scrollTop, left:rect.left + scrollLeft }
 }
-
 animOnScroll();
+
+
+const toNavButton=document.querySelector('._show-nav-button');
+window.onscroll=()=>{
+  if(window.scrollY>offset(document.querySelector('.nav-button-show-offset')).top){
+    toNavButton.classList.remove('_hide');
+  }
+  else{
+    toNavButton.classList.add('_hide');
+  }
+}
