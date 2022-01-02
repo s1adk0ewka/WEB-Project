@@ -36,11 +36,41 @@ animOnScroll();
 
 const toNavButton=document.querySelector('._show-nav-button');
 const button_show_trigger=document.querySelector('.nav-button-show-trigger');
+let trigger= offset(button_show_trigger).top;
 window.onscroll=()=>{
-  if(window.scrollY>offset(button_show_trigger).top){
+  if(window.scrollY>trigger){
     toNavButton.classList.remove('_hide');
   }
   else{
     toNavButton.classList.add('_hide');
   }
 }
+// data:[84,78,69,68,49]
+let perenosCanvas = document.getElementById('perenos-chart').getContext('2d');
+let config={
+  type:"bar",
+  data:{
+    labels:["бренд","общение в сети","самореализация", "рассказать о себе другим", "чтобы опубликовать ценный контент"],
+    datasets:[{
+      backgroundColor:["blue","gray","black","#d48b0d","red"],
+      data:[84,78,69,68,49]}
+      
+    ]},
+    options: {
+      plugins: 
+      {
+          legend: {
+              display: false,
+          },
+          datalabels:{
+            color:"#FFF", 
+            formatter: (value, context) =>{
+              return `${value}%`
+            }
+          }
+      }
+    },
+    plugins:[ChartDataLabels]
+  
+}
+let perenosChart = new Chart(perenosCanvas,config);

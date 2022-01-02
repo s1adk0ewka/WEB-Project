@@ -81,8 +81,20 @@ h4{
 section.conspect{
     background-color: #2d3957;
 }
-section.images, .navigation{
+section.images, .navigation, section.chart{
     background-color: whitesmoke;
+}
+
+section.chart div{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+}
+
+.chart div{
+    margin:0;
+    padding: 0;
+    width:80vw;
 }
 .text{
     color: #e1e3e8;

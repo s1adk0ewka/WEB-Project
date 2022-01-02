@@ -8,7 +8,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- кнопка наверх -->
@@ -102,9 +102,16 @@
             но и предпринимательской самореализации.
         </p> 
     </section>
+    <section class="chart">
+        <div>
+            <canvas id="perenos-chart"></canvas>
+        </div>
+        
+    </section>
     <section class="images">
         <div class="image img4 _anim-items _anim-show_transition"></div>
     </section>
+    
     <!-- Новые каналы коммуникации -->
     <section class="conspect">
         <a id="Новые каналы коммуникации">
@@ -404,6 +411,8 @@
         <div class="image fin1 _anim-items _anim-show_transition_left"></div>
         <div class="image fin3 _anim-items _anim-show_transition_right"></div>
     </section>
+    <script src="chart.js"></script>
+    <script src="chartjs-plugin-datalabels.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
