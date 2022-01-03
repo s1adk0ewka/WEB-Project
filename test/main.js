@@ -50,7 +50,7 @@ let perenosCanvas = document.getElementById('perenos-chart').getContext('2d');
 let config={
   type:"bar",
   data:{
-    labels:["Поддержать бренд","Общение в сети","Самореализация", "Рассказать о себе другим", "Опубликовать ценный контент"],
+    labels:[["Поддержать","бренд"],["Общение","в сети"],["Самореализация"], ["Рассказать", "о себе", "другим"], ["Опубликовать","ценный контент"]],
     datasets:[{
       backgroundColor:["blue","gray","black","#d48b0d","red"],
       data:[84,78,69,68,49]}
