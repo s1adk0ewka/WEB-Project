@@ -50,15 +50,33 @@ let perenosCanvas = document.getElementById('perenos-chart').getContext('2d');
 let config={
   type:"bar",
   data:{
-    labels:["бренд","общение в сети","самореализация", "рассказать о себе другим", "чтобы опубликовать ценный контент"],
+    labels:["Поддержать бренд","Общение в сети","Самореализация", "Рассказать о себе другим", "Опубликовать ценный контент"],
     datasets:[{
       backgroundColor:["blue","gray","black","#d48b0d","red"],
       data:[84,78,69,68,49]}
       
     ]},
     options: {
+      scales:{
+        y:{
+          ticks:{
+            callback: function (value) {
+              return `${value}%`; 
+            },
+          },
+        },
+      },
       plugins: 
       {
+        title:{
+          display:true,
+          text: 'Почему люди делают публикации в соцсетях',
+          font:{
+            size:25,
+            color: 'black'
+          },
+
+        },
           legend: {
               display: false,
           },
