@@ -1,4 +1,4 @@
-//первый график тема Перенос социального взаимодействия
+//#region первый график тема Перенос социального взаимодействия
 let perenosCanvas = document.getElementById('perenos-chart').getContext('2d');
 let perenosConfig={
   type:"bar",
@@ -50,8 +50,8 @@ let perenosConfig={
     plugins:[ChartDataLabels]
 };
 let perenosChart = new Chart(perenosCanvas,perenosConfig);
-// график с мессенджерами
-
+//#endregion
+//#region график с мессенджерами
 const WhatsAppImage = new Image();
 const FacebookImage = new Image();
 const WeChatImage = new Image();
@@ -116,11 +116,11 @@ let msgConfig=
       plugins: 
       {
         tooltip:{
-          callbacks:{
-            title: (context) => {
-              return context[0].label.replaceAll(',',' ')
-            }
-          },
+          // callbacks:{
+          //   callback: (value) => {
+          //     return `${value}M`;
+          //   }
+          // },
         },
         title:{
           display:true,
@@ -137,10 +137,78 @@ let msgConfig=
           color:"#3b3b3b",
           formatter: (value, context) =>{
             return `${value}М`
-        }
+          }
         }
       }
     },
     plugins:[barAvatar,ChartDataLabels]
   }; 
   let msgChart = new Chart(msgCanvas,msgConfig);
+//#endregion
+//#region график безопасности в тыртырнете
+let safetyCanvas=document.getElementById('safety-chart').getContext('2d');
+const safetyData = {
+  labels: [
+    'Цензура не нужна',
+    'Затрудняюсь ответить',
+    'Необходима цензура'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [20, 17, 63],
+    backgroundColor: [
+      '#ffd41a',
+      '#ff4006',
+      '#004387'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+// const legendMargin={
+//   id:'legendMargin',
+//   beforeInit(chart, legend, options) {
+//     const fitValue=chart.legend.fit;
+//     chart.legend.fit = function fit(){
+//       fitValue.bind(chart.legend)();
+//       return this.height += 20;
+//     }
+//   }
+// };
+
+const safetyConfig = {
+  type: 'pie',
+  data: safetyData,
+  options:{
+    plugins:{
+      title:{
+        font:{
+          size:18
+        },
+        display:true,
+        text:"Результаты всероссийского опроса «Левада-центра» относительно цензуры в Интернете",
+        position:'top'
+      },
+      tooltip:{
+        callbacks:{
+          label: (context) => {
+            return `${context.label}: ${context.parsed}%`;
+          }
+        },
+      },
+      legend:{
+        padding:10,
+        position:'right'
+      },
+      datalabels:{
+        color:'#000',
+        formatter: (value, context) =>{
+          return `${value}%`
+        }
+      }
+    }
+  },
+  plugins:[ChartDataLabels]
+};
+let safetyChart=new Chart(safetyCanvas,safetyConfig);
+//#endregion

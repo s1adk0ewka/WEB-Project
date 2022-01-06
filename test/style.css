@@ -97,6 +97,9 @@ section.charts div{
     padding: 0;
     width:70vw;
 }
+.pie-type div{
+    width: 50vw;
+}
 .text{
     color: #e1e3e8;
     text-shadow: 1px 1px 1px #000;
