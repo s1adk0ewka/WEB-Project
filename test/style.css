@@ -100,11 +100,30 @@ section.charts div{
 .pie-type div{
     width: 50vw;
 }
+
+.doughnut-type div{
+    width: 80vw;
+    height: 100vh;
+
+}
 .text{
     color: #e1e3e8;
     text-shadow: 1px 1px 1px #000;
     font-size: 30px;
     margin: 100px;
+}
+
+section.charts .text-title{
+    display: block;
+    /* border: 1px solid red; */
+    font-size: 24px;
+    width: fit-content;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    color: #000;
+    text-shadow: 1px 1px 1px #e1e3e8;
 }
 
 .nav{

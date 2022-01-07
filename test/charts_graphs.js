@@ -73,7 +73,7 @@ ViberImage.src='images/icons/Viber.png';
 LineImage.src='images/icons/Line.png';
 SkypeImage.src='images/icons/Skype.png';
 
-const iconsArray=[WhatsAppImage,FacebookImage,WeChatImage,QQImage,TelegramImage,SnapchatImage,DiscordImage,ViberImage,LineImage,SkypeImage]
+const iconsArray=[WhatsAppImage,FacebookImage,WeChatImage,QQImage,TelegramImage,SnapchatImage,DiscordImage,ViberImage,LineImage,SkypeImage];
 const datapoints=[2000,1300,1200,648,500,433,300,260,250,50];
 const barAvatar={
   id:'barAvatar',
@@ -211,4 +211,130 @@ const safetyConfig = {
   plugins:[ChartDataLabels]
 };
 let safetyChart=new Chart(safetyCanvas,safetyConfig);
+//#endregion
+//#region диаграма пончик в разделе накопление и сложность восприятия
+ponchikCanvas=document.getElementById('ponchik-chart').getContext('2d');
+const ponchikData = {
+  labels: [
+    '2M просмотров',
+    '$1.6M потрачено',
+    '2M свайпнуто',
+    '197.6M писем',
+    '500 часов загружено',
+    '5K скачиваний',
+    '69M сообщений',
+    '9K соединений',
+    '695K историй',
+    '28K подписчиков смотрят'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [1, 1, 1,1,1, 1, 1, 1,1,1],
+    backgroundColor: [
+      '#4d0b80',
+      '#0f0f0f',
+      '#fc3d83',
+      '#03387f',
+      '#fd0000',
+      '#19cbff',
+      '#4d0b80',
+      '#0386e6',
+      '#f09124',
+      '#c00406'
+    ],
+    hoverOffset: 4,
+    cutout:'60%'
+  }]
+};
+
+const ponchikPlugin ={
+  id:'ponchikPlugin',
+  afterDatasetDraw(chart, args, options){
+    const {ctx,chartArea:{top, bottom, left, right, width, height}}= chart;
+    chart.data.datasets.forEach((dataset, i) =>{
+      chart.getDatasetMeta(i).data.forEach((datapoint,index)=>{
+        const{x,y}=datapoint.tooltipPosition();
+        const halfWidth= width/2;
+        const halfHeight = height/2;
+        const xLine = x>=halfWidth?x+60:x-60;
+        const yLine = y>=halfHeight?y+60:y-60;
+        const extraLine = x >= halfWidth?30:-30;
+        ctx.beginPath();
+        ctx.moveTo(x,y);
+        ctx.lineTo(xLine,yLine);
+        ctx.lineTo(xLine+extraLine,yLine);
+        ctx.strokeStyle = dataset.backgroundColor[index];
+        ctx.stroke();
+        const textWidth = ctx.measureText(chart.data.labels[index]).width;
+        ctx.font='16px Arial';
+        ctx.textAlign= x>= halfWidth?'left':'right';
+        const offset= x>= halfWidth?10:-10;
+        // const horOffset= x>= halfWidth?-10:10;
+        // const vertOffset= y>= halfHeight?-10:10;
+        ctx.textBaseline='middle';
+        ctx.fillStyle = dataset.backgroundColor[index];
+        ctx.fillText(chart.data.labels[index], xLine + extraLine + offset, yLine);
+        ctx.drawImage(imagesArray[index],x-20,y-20,45,45);
+        
+      })
+    })
+    // for(let i=0; i<ponchikData.length;i++){
+    //   ctx.drawImage(imagesArray[i], x.getPixelForValue(i)-(30/2),y.getPixelForValue(ponchikData[i])-(40),30,30);
+    // };
+    ctx.drawImage(clock,width/2-25,height/2-25,150,150);
+  }
+};
+const cart = new Image();
+const clock = new Image();
+const linked = new Image();
+const insta = new Image();
+const mail = new Image();
+const msg = new Image();
+const netflix = new Image();
+const tiktok = new Image();
+const tinder = new Image();
+const twich = new Image();
+const yt = new Image();
+cart.src='images/minuta/корзина.png';
+clock.src='images/minuta/часы.png';
+linked.src='images/minuta/in.png';
+insta.src='images/minuta/instagram.png';
+mail.src='images/minuta/mail.png';
+msg.src='images/icons/Facebook.png';
+netflix.src='images/minuta/netflix.png';
+tiktok.src='images/minuta/tiktok.png';
+tinder.src='images/minuta/tinder.png';
+twich.src='images/minuta/twich.png';
+yt.src='images/minuta/youtube.png';
+const imagesArray=[twich,cart,tinder,mail,yt,tiktok,msg,linked,insta,netflix];
+const ponchikConfig = {
+  type: 'doughnut',
+  data: ponchikData,
+  options:{
+    layout:{
+      padding:50
+    },
+    maintainAspectRatio:false,
+    plugins:{
+      title:{
+        // padding: 110,
+        display:false,
+        text:'Минута в интернете в 2021 году',
+        font:{
+          size:16,
+          color: 'black'
+        }
+      },
+      legend:{
+        display:false
+      },
+      tooltip: {
+        enabled: false
+      },
+    }
+  },
+  plugins:[ponchikPlugin]
+};
+
+let ponchikChart = new Chart(ponchikCanvas, ponchikConfig);
 //#endregion
