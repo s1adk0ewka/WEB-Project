@@ -6,7 +6,8 @@ let perenosConfig={
     labels:[["Поддержать","бренд"],["Общение","в сети"],["Самореализация"], ["Рассказать", "о себе", "другим"], ["Опубликовать","ценный контент"]],
     datasets:[{
       backgroundColor:["blue","gray","black","#d48b0d","red"],
-      data:[84,78,69,68,49]}
+      data:[84,78,69,68,49]
+    }
       
     ]},
     options: {
@@ -337,4 +338,88 @@ const ponchikConfig = {
 };
 
 let ponchikChart = new Chart(ponchikCanvas, ponchikConfig);
+//#endregion
+//#region процент устройств
+devicePercentCanvas=document.getElementById('device-percent-chart').getContext('2d');
+
+devicePercentData=[56,40,3,1];
+devicePercentLabels=['Мобильные телефоны', 'ПК и ноутбуки','Планшеты','Другие'];
+
+const phone = new Image(30,30);
+const laptop = new Image(30,30);
+const tablet= new Image(30,30);
+const other = new Image(30,30);
+phone.src='images/dolya_ustroystv/смартфон рисунок.png';
+laptop.src='images/dolya_ustroystv/ноутбук рисунок.png';
+tablet.src='images/dolya_ustroystv/планшет рисунок.png';
+other.src='images/dolya_ustroystv/геймпад рисунок2.png';
+
+devicesImagesArray=[phone,laptop,tablet,other];
+
+const devicePercentPlugin={
+  id:'devicePercentPlugin',
+  afterDatasetDraw(chart, args, options) {
+    const { ctx, chartArea:{top, bottom, left, right, width, height}, scales:{x,y} } = chart;
+    ctx.save();
+    for(let i=0; i<devicePercentData.length;i++){
+      ctx.drawImage(devicesImagesArray[i], x.getPixelForValue(i)-(30/2),y.getPixelForValue(devicePercentData[i])-(40),30,30);
+    }
+  }
+}
+
+devicePercentConfig={
+  type:'bar',
+  data:{
+    labels:devicePercentLabels,
+    datasets:[{
+      data:devicePercentData,
+      backgroundColor:[
+        '#0081e2',
+        '#fc9c01',
+        '#ff110e',
+        '#00c103'
+      ],
+      hoverOffset: 4
+    }]
+  },
+  options:{
+    layout:{
+      // padding:20
+    },
+    scales:{
+      y:{
+        max:100,
+        ticks:{
+          callback: function (value) {
+            return `${value}%`; 
+          },
+        }
+      }
+    },
+    plugins:{
+      tooltip:{
+
+      },
+      legend:{
+        display:false
+      },
+      datalabels:{
+        color:"#3b3b3b",
+          formatter: (value, context) =>{
+            return `${value}%`
+          }
+      },
+      title:{
+        display:true,
+        text:'Доля веб-трафика на устройстве за 2021 год',
+        font:{
+          color:'black',
+          size:24
+        }
+      }
+    },
+  },
+  plugins:[devicePercentPlugin,ChartDataLabels]
+};
+devicePercentChart= new Chart(devicePercentCanvas,devicePercentConfig);
 //#endregion
