@@ -24,7 +24,8 @@ let perenosConfig={
       {
           tooltip:{
               callbacks:{
-                  title: (context) => {
+                label: data => ` ${data.formattedValue}%`,
+                title: (context) => {
                       return context[0].label.replaceAll(',',' ')
                   }
               },
@@ -117,11 +118,11 @@ let msgConfig=
       plugins: 
       {
         tooltip:{
-          // callbacks:{
-          //   callback: (value) => {
-          //     return `${value}M`;
-          //   }
-          // },
+          callbacks: {
+
+            label: data => ` ${data.formattedValue}М`
+        
+          }        
         },
         title:{
           display:true,
@@ -398,7 +399,9 @@ devicePercentConfig={
     },
     plugins:{
       tooltip:{
-
+        callbacks: {
+          label: data => ` ${data.formattedValue}%`
+        }
       },
       legend:{
         display:false
@@ -422,4 +425,105 @@ devicePercentConfig={
   plugins:[devicePercentPlugin,ChartDataLabels]
 };
 devicePercentChart= new Chart(devicePercentCanvas,devicePercentConfig);
+//#endregion
+//#region состояние интернета
+digitalCanvas=document.getElementById('digital-chart').getContext('2d');
+const inet = new Image();
+const people = new Image();
+const smartphone = new Image();
+const msges = new Image();
+inet.src='images/internet/интернет.png';
+people.src='images/internet/люди.png';
+smartphone.src='images/internet/смартфон рисунок.png';
+msges.src='images/internet/сообщения.png';
+
+digitalImages=[inet,people,smartphone,msges];
+
+const digitalPlugin={
+  id:'digitalPlugin',
+  afterDatasetDraw(chart, args, options) {
+    const { ctx, chartArea:{top, bottom, left, right, width, height}, scales:{x,y} } = chart;
+    ctx.save();
+    for(let i=0; i<devicePercentData.length;i++){
+      ctx.drawImage(digitalImages[i], x.getPixelForValue(i)-(30/2),y.getPixelForValue(digitalData[i])-(40),30,30);
+    }
+  }
+}
+
+digitalData=[7.83,5.22,4.66,4.20];
+digitalPercents=['урбанизация 56.4%','66.6% от населения','59.5% от населения','53.6% от населения'];
+digitalLabels=[
+  ['Население'],
+  ['Уникальных', 'пользователей','смартфоном'],
+  ['Пользователи', 'интернета'],
+  ['Активные', 'пользователи','интернета']
+];
+digitalConfig={
+  type:'bar',
+  data:{
+    labels:digitalLabels,
+    datasets:[{
+      data:digitalData,
+      backgroundColor:[
+        '#f01913',
+        '#60c01e',
+        '#1780df',
+        '#fe9a00'
+      ],
+      hoverOffset: 4
+    }]
+  },
+  options:{
+    layout:{
+      // padding:20
+    },
+    scales:{
+      y:{
+        max:10,
+        ticks:{
+          callback: function (value) {
+            if (value===0) return value;
+            return `${value} млрд.`; 
+          },
+        }
+      }
+    },
+    plugins:{
+      tooltip:{
+        callbacks:{
+          title: (context) => {
+            return context[0].label.replaceAll(',',' ')
+          },
+          label: (context) =>{
+            console.log(context);
+            return `${context.raw} млрд, ${digitalPercents[context.dataIndex]}`
+          },
+          // afterBody: (context) => {
+          //   return `${digitalPercents[context[0].dataIndex]}`
+          // }
+        }
+      },
+      legend:{
+        display:false
+      },
+      datalabels:{
+        color:"#3b3b3b",
+          formatter: (value, context) =>{
+            return `${value} млрд.`
+          }
+      },
+      title:{
+        display:true,
+        text:'Состояние интернета',
+        font:{
+          color:'black',
+          size:24
+        }
+      }
+    },
+  },
+  plugins:[digitalPlugin,ChartDataLabels]
+};
+
+digitalChart= new Chart(digitalCanvas,digitalConfig);
 //#endregion
