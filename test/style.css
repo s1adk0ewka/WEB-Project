@@ -388,6 +388,23 @@ ol li{
     transform: scale(1);
 }
 
+.blocks-wrapper .col1{
+    transition: all 1s ease 0.2s;
+}
+
+.blocks-wrapper .col2{
+    transition: all 1.2s ease 0.2s;
+}
+.blocks-wrapper .col3{
+    transition: all 1.4s ease 0.2s;
+}
+.blocks-wrapper .col4{
+    transition: all 1.6s ease 0.2s;
+}
+.blocks-wrapper .col5{
+    transition: all 1.8s ease 0.2s;
+}
+
 #ToNavigationButton{
     position: fixed;
     bottom:5vh;
