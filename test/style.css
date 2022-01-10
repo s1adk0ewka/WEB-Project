@@ -3,8 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    /* overflow-x: hidden; */
+    /* scroll-behavior: smooth; */
 }
 
 article{
@@ -79,10 +79,11 @@ h4{
     font-size: 35px;
 }
 section.conspect{
+    padding:2vh;
     background-color: #2d3957;
 }
 section.images, .navigation, section.charts{
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
 }
 
 section.charts div{
@@ -113,6 +114,30 @@ section.charts div{
     margin: 100px;
 }
 
+.blocks-wrapper{
+    display: flex;
+    padding:30px;
+}
+
+.blocks-wrapper .column{
+    display: inline-block;
+    overflow-y: hidden;
+    text-align:center;
+    width:20vw;
+    margin:20px;
+    min-height: 70vh;
+}
+
+.column div{
+    width: 100%;
+    height: 33%;
+}
+
+.column div span{
+    position: relative;
+    top: 10%;
+}
+
 section.charts .text-title{
     display: block;
     /* border: 1px solid red; */
@@ -138,7 +163,7 @@ section.charts .text-title{
 
 .navigation_container{
     margin:20px;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     height: fit-content;
 }
 .navigation_container span{
@@ -298,6 +323,27 @@ ol li{
     background-image: url("images/fin3.png");
 }
 
+.column-image{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+.col1 .column-image{
+    background-image: url("images/auditoria/сообщения.png");
+}
+.col2 .column-image{
+    background-image: url("images/auditoria/сообщения.png");
+}
+.col3 .column-image{
+    background-image: url("images/auditoria/стрелочки.png");
+}
+.col4 .column-image{
+    background-image: url("images/auditoria/смартфон.png");
+}
+.col5 .column-image{
+    background-image: url("images/auditoria/смартфон.png");
+}
+
 ._anim-show_transition{
     transform: translate(0px, 10%);
     opacity: 0;
@@ -348,7 +394,7 @@ ol li{
     right:5vw;
     z-index: 1000;
     background-color: #3054ad;
-    border:1px solid whitesmoke;
+    /* border:1px solid whitesmoke; */
     border-radius: 10px;
 }
 

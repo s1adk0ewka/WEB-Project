@@ -527,3 +527,163 @@ digitalConfig={
 
 digitalChart= new Chart(digitalCanvas,digitalConfig);
 //#endregion
+//#region макс скорость
+speedCanvas=document.getElementById('operators-speed-chart').getContext('2d');
+speedData=[229.5,160.5,94.1,88.4];
+speedLabels=["МегаФон","Вымпелком","МТС","Tele2"];
+const megafon= new Image();
+const vympel= new Image();
+const mts= new Image();
+const tele2= new Image();
+megafon.src='images/operatory/мегафон.png';
+vympel.src='images/operatory/вымпелком.png';
+mts.src='images/operatory/мтс.png';
+tele2.src='images/operatory/теле2.png';
+const speedImages=[megafon,vympel,mts,tele2];
+const speedPlugin={
+  id:'speedPlugin',
+  afterDatasetDraw(chart, args, options) {
+    const { ctx, chartArea:{top, bottom, left, right, width, height}, scales:{x,y} } = chart;
+    ctx.save();
+    for(let i=0; i<devicePercentData.length;i++){
+      ctx.drawImage(speedImages[i], x.getPixelForValue(i)-(30/2),y.getPixelForValue(speedData[i])-(40),30,30);
+    }
+  }
+}
+
+speedConfig={
+  type:'bar',
+  data:{
+    labels:speedLabels,
+    datasets:[{
+      data:speedData,
+      backgroundColor:[
+        '#17955a',
+        '#f9e13e',
+        '#e40109',
+        '#000000'
+      ],
+      hoverOffset: 4
+    }]
+  },
+  options:{
+    layout:{
+      // padding:20
+    },
+    scales:{
+      y:{
+        max:300,
+        ticks:{
+          callback: function (value) {
+            // if (value===0) return value;
+            return `${value} Мбит/сек`; 
+          },
+        }
+      }
+    },
+    plugins:{
+      tooltip:{
+        callbacks:{
+          label: (context) =>{
+            console.log(context);
+            return `${context.raw} Мбит/сек`
+          }
+        }
+      },
+      legend:{
+        display:false
+      },
+      datalabels:{
+        color:"white",
+          formatter: (value, context) =>{
+            return `${value} Мбит/сек`
+          }
+      },
+      title:{
+        padding:20,
+        display:true,
+        text:'Максимальная скорость передачи данных в РФ(размещение контента от абонента)',
+        font:{
+          color:'black',
+          size:24
+        }
+      }
+    },
+  },
+  plugins:[speedPlugin,ChartDataLabels]
+};
+speedChart= new Chart(speedCanvas,speedConfig);
+//#endregion
+//#region статистика по полу и возрасту
+adoptCanvas=document.getElementById('ecom-adoption-chart').getContext('2d');
+adoptMaleData=[72.6,76.6,77.9,74.6,71.9];
+adoptFemaleData=[77.7,79.9,79.9,79.5,75.6];
+adoptLabels=["16-24 лет","25-34 лет","35-44 лет","45-54 лет","55-64 лет"]
+adoptConfig={
+  type:'bar',
+  data:{
+    labels:adoptLabels,
+    datasets:[{
+      label:'Мужчины',
+      data:adoptMaleData,
+      backgroundColor:[
+        '#1880df'
+      ],
+    },
+    {
+      label:'Женщины',
+      data:adoptFemaleData,
+      backgroundColor:[
+        '#fc3d83'
+      ],
+    }
+  ]
+  },
+  options:{
+    layout:{
+      // padding:20
+    },
+    scales:{
+      y:{
+        max:100,
+        ticks:{
+          callback: function (value) {
+            // if (value===0) return value;
+            return `${value}%`; 
+          },
+        }
+      }
+    },
+    plugins:{
+      tooltip:{
+        callbacks:{
+          label: (context) =>{
+            console.log(context);
+            return `${context.raw}%`
+          }
+        }
+      },
+      legend:{
+        display:false
+      },
+      datalabels:{
+        color:"white",
+          formatter: (value, context) =>{
+            return `${value}%`
+          }
+      },
+      title:{
+        padding:20,
+        display:true,
+        text:'Статистика по полу и возрасту',
+        font:{
+          color:'black',
+          size:24
+        }
+      }
+    },
+  },
+  plugins:[ChartDataLabels]
+};
+adoptChart= new Chart(adoptCanvas,adoptConfig);
+//#endregion
