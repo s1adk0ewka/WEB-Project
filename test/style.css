@@ -143,32 +143,69 @@ section.charts div{
     color: #e1e3e8;
     text-shadow: 1px 1px 1px #000;
     font-size: 30px;
-    margin: 20px 100px;
+    margin: 0px 100px 20px 100px;
+    float:left;
 }
 
+
+
 .text-image{
-    color: #e1e3e8;
+    /* color: #e1e3e8;
     text-shadow: 1px 1px 1px #000;
     font-size: 30px;
     width:40%;
     margin-left:100px;
-    margin-right:7vw;
+    margin-right:7vw; */
     /* line-height: 40px; */
+    margin: 0px 20vh 20px 100px;
+    width:50%;
+}
+
+img{
+    /* float:right; */
+    width:20%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    /* margin-left: 15vw;; */
+    /* margin-right: 10vw; */
 }
 
 
 .wrapper{
-    /* text-align: center; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+.wrapper-fin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+.wrapper-fin img{
+    width: 50%;
+    margin:5vw;
+}
+/* .wrapper{
+    text-align: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     display:flex;
-}
+} */
 
-.wrapper div,.wrapper p,.wrapper ol{
-    display: inline-block;
-}
+/* .wrapper div,.wrapper p,.wrapper ol{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+} */
 
-.wrapper ol{
+/* .wrapper ol{
     margin-left:70px;
-}
+} */
 
 /* .conspect .wrapper .image{
     margin:0;
@@ -274,83 +311,85 @@ ol li{
 
 .img1{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/1.png");
+    background-size: contain;
+    background-image: url("images/1.2.jpg");
 }
 
 .img2{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/2.png");
+    background-size: contain;
+    background-image: url("images/2.1.jpg");
 }
 
-.img3{
-    /* margin:50px auto 50px 30vw; */
+/* .img3{
+    margin:50px auto 50px 30vw;
     background-image: url("images/3.png");
-}
+} */
 
 .img4{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/4.png");
+    background-image: url("images/4.1.jpg");
 }
 
 .img5{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/5.png");
+    background-image: url("images/5.1.jpg");
 }
 
 .img6{
     /* margin:50px auto 50px 30vw; */
     /* min-width: 953px;
     min-height: 894px; */
-    background-image: url("images/6.png");
+    background-image: url("images/6.1.jpg");
     background-size: contain;
 
 }
 
 .img7{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/7.1.png");
+    background-image: url("images/7.jpg");
     background-size: contain;
 }
 
 .img8{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/fin1.png");
+    background-image: url("images/8.1.jpg");
 }
 
-.img9{
-    /* margin:50px auto 50px 30vw; */
+/* .img9{
+    margin:50px auto 50px 30vw;
     background-image: url("images/9.png");
-}
+} */
 
 .img10{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/10.png");
+    background-image: url("images/10.1.jpg");
 }
 
 .img10_3{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/10.3.png");
+    background-image: url("images/10.2.jpg");
 }
 
-.img11{
-    /* margin:50px auto 50px 30vw; */
+/* .img11{
+    margin:50px auto 50px 30vw;
     background-image: url("images/11.png");
-}
+} */
 
-.img12{
-    /* margin:50px auto 50px 30vw; */
+/* .img12{
+    margin:50px auto 50px 30vw;
     background-image: url("images/12.png");
-}
+} */
 
 .img13{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/13.png");
+    background-image: url("images/13.1.jpg");
 }
 
-.img14{
-    /* margin:50px auto 50px 30vw; */
+/* .img14{
+    margin:50px auto 50px 30vw;
     background-image: url("images/14.png");
-}
+} */
 
 .img15{
     /* margin:50px auto 50px 30vw; */
@@ -359,14 +398,14 @@ ol li{
 
 .img16{
     /* margin:50px auto 50px 30vw; */
-    background-image: url("images/16.png");
+    background-image: url("images/16.1.jpg");
 }
 
 
-.img17{
-    /* margin:50px auto 50px 30vw; */
+/* .img17{
+    margin:50px auto 50px 30vw;
     background-image: url("images/17.png");
-}
+} */
 
 .img18{
     background-size: contain;
