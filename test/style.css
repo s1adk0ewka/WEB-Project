@@ -280,7 +280,7 @@ section.charts .text-title{
 
 .list{
     list-style-type: decimal;
-    padding-left: 30px;
+    /* padding-left: 30px; */
     text-decoration: none;
 }
 .list a{
