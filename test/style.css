@@ -28,7 +28,7 @@ section{
     display: flex;
     min-height: 100vh;
     width: 100%;
-    background-image: url("images/slsljlaxjuwropshc5dlc2vy8yy.jpeg");
+    background-image: url("images/worktable.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -39,7 +39,9 @@ section{
 header{
     display: flex;
     width: 100%;
-    background: radial-gradient(rgba(16,105,198,0.7) 0%, rgba(5,5,159,0.6) 60%, rgba(2,0,36,1) 100%);
+    /* background: radial-gradient(rgba(16,105,198,0.7) 0%, rgba(5,5,159,0.6) 60%, rgba(2,0,36,1) 100%); */
+    background: rgb(45,57,87);
+    background: radial-gradient(rgba(45,57,87,0.52) 0%, rgba(2,0,36,1) 100%);
     justify-content: center;
     vertical-align: middle;
 }
