@@ -488,6 +488,62 @@ ol li{
     transform: scale(1);
 }
 
+.nav .li1{
+    transition: all 1s ease 0.2s;
+}
+
+.nav .li2{
+    transition: all 1.1s ease 0.2s;
+}
+
+.nav .li3{
+    transition: all 1.2s ease 0.2s;
+}
+
+.nav .li4{
+    transition: all 1.3s ease 0.2s;
+}
+
+.nav .li5{
+    transition: all 1.4s ease 0.2s;
+}
+
+.nav .li6{
+    transition: all 1.5s ease 0.2s;
+}
+
+.nav .li7{
+    transition: all 1.6s ease 0.2s;
+}
+
+.nav .li8{
+    transition: all 1.7s ease 0.2s;
+}
+
+.nav .li9{
+    transition: all 1.8s ease 0.2s;
+}
+
+.nav .li10{
+    transition: all 1.9s ease 0.2s;
+}
+
+.nav .li11{
+    transition: all 2s ease 0.2s;
+}
+
+.nav .li12{
+    transition: all 2.1s ease 0.2s;
+}
+
+.nav .li13{
+    transition: all 2.2s ease 0.2s;
+}
+
+.nav .li14{
+    transition: all 2.3s ease 0.2s;
+}
+
 .blocks-wrapper .col1{
     transition: all 1s ease 0.2s;
 }
