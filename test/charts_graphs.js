@@ -1,3 +1,20 @@
+function vh(v) {
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  return (v * h) / 100;
+}
+
+function vw(v) {
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  return (v * w) / 100;
+}
+
+function vmin(v) {
+  return Math.min(vh(v), vw(v));
+}
+
+function vmax(v) {
+  return Math.max(vh(v), vw(v));
+}
 //#region первый график тема Перенос социального взаимодействия
 let perenosCanvas = document.getElementById('perenos-chart').getContext('2d');
 let perenosConfig={
@@ -255,12 +272,12 @@ const ponchikPlugin ={
     const {ctx,chartArea:{top, bottom, left, right, width, height}}= chart;
     chart.data.datasets.forEach((dataset, i) =>{
       chart.getDatasetMeta(i).data.forEach((datapoint,index)=>{
-        const{x,y}=datapoint.tooltipPosition();
-        const halfWidth= width/2;
-        const halfHeight = height/2;
-        const xLine = x>=halfWidth?x+60:x-60;
-        const yLine = y>=halfHeight?y+60:y-60;
-        const extraLine = x >= halfWidth?30:-30;
+        let{x,y}=datapoint.tooltipPosition();
+        let halfWidth= width/2;
+        let halfHeight = height/2;
+        let xLine = x>=halfWidth?x+vw(5):x-vw(5);
+        let yLine = y>=halfHeight?y+vw(5):y-vw(5);
+        let extraLine = x >= halfWidth?vw(2.5):-vw(2.5);
         ctx.beginPath();
         ctx.moveTo(x,y);
         ctx.lineTo(xLine,yLine);
@@ -271,8 +288,6 @@ const ponchikPlugin ={
         ctx.font='16px Arial';
         ctx.textAlign= x>= halfWidth?'left':'right';
         const offset= x>= halfWidth?10:-10;
-        // const horOffset= x>= halfWidth?-10:10;
-        // const vertOffset= y>= halfHeight?-10:10;
         ctx.textBaseline='middle';
         ctx.fillStyle = dataset.backgroundColor[index];
         ctx.fillText(chart.data.labels[index], xLine + extraLine + offset, yLine);
