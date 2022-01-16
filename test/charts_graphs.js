@@ -679,7 +679,8 @@ adoptConfig={
         }
       },
       legend:{
-        display:false
+        display:true,
+        position:'bottom'
       },
       datalabels:{
         color:"white",
