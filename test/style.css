@@ -134,7 +134,7 @@ section.charts div{
 
 
 .text-image{
-    margin: 0px 20vh 20px 350px;
+    margin: 0px 10vh 20px 350px;
     width:40%;
 }
 
@@ -142,7 +142,11 @@ img{
 
     width:20%;
     /* margin-top: 5vh; */
-    /* margin-bottom: 5vh; */
+    margin-bottom: 2vh;
+}
+
+.big-img{
+    width: 15%;
 }
 
 
