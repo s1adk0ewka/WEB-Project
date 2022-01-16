@@ -126,23 +126,23 @@ section.charts div{
 .text{
     color: #e1e3e8;
     text-shadow: 1px 1px 1px #000;
-    font-size: 30px;
-    margin: 0px 100px 20px 100px;
+    font-size: 25px;
+    margin: 0px 350px 20px 350px;
     float:left;
 }
 
 
 
 .text-image{
-    margin: 0px 20vh 20px 100px;
-    width:50%;
+    margin: 0px 20vh 20px 350px;
+    width:40%;
 }
 
 img{
 
     width:20%;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    /* margin-top: 5vh; */
+    /* margin-bottom: 5vh; */
 }
 
 
