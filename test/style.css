@@ -92,10 +92,15 @@ h4{
     font-size: 35px;
 }
 section.conspect{
-    padding:2vh;
+    padding-right:20vw;
+    padding-left:20vw;
     padding-top:5vh;
     padding-bottom: 5vh;
     background-color: #2d3957;
+}
+
+section.multiple-concpets section.conspect:nth-child(n+1){
+    padding-top: 0vh;
 }
 
 section.conspect p{
@@ -125,22 +130,24 @@ section.charts div{
 }
 .text{
     color: #e1e3e8;
+    min-width: 40vw;
     text-shadow: 1px 1px 1px #000;
     font-size: 25px;
-    margin: 0px 350px 20px 350px;
+    margin: 0px 0px 20px 0px;
     float:left;
 }
 
 
 
 .text-image{
-    margin: 0px 10vh 20px 350px;
-    width:40%;
+    margin: 0px 5vw 20px 0px;
+    width:70%;
 }
 
 img{
-
-    width:20%;
+    float: right;
+    min-width:20%;
+    /* margin-right: 5vw; */
     /* margin-top: 5vh; */
     margin-bottom: 2vh;
 }
@@ -223,7 +230,7 @@ section.charts .text-title{
     height: fit-content;
 }
 .navigation_container{
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .navigation_container ul{
